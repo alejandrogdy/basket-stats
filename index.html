@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Basket Stats V18.1 - Legibilidad Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="setup-panel">
+        <div class="inputs">
+            <input type="text" id="localNameInput" placeholder="EQUIPO LOCAL" oninput="updateNames()">
+            <input type="text" id="visitNameInput" placeholder="EQUIPO RIVAL" oninput="updateNames()">
+        </div>
+        <button onclick="resetGame()" class="btn-reset">NUEVO PARTIDO</button>
+    </div>
+
+    <div id="warning-msg">
+        ⚠️ ATENCIÓN: DEBE HABER EXACTAMENTE 5 JUGADORES EN PISTA
+    </div>
+
+    <div id="app-body">
+        <div id="players-sidebar">
+            <div class="column-header">PISTA (MÁX. 5)</div>
+            <div id="active-list" class="player-container"></div>
+            <div class="column-header bench-header">BANQUILLO / CLUB</div>
+            <div id="bench-list" class="player-container"></div>
+        </div>
+
+        <div id="action-panel">
+            <div id="mini-scoreboard">
+                <div class="score-unit">
+                    <span id="localLabel">NOSOTROS</span>
+                    <div id="local-score" class="points-white">0</div>
+                </div>
+                <div class="vs">VS</div>
+                <div class="score-unit rival-layout">
+                    <div class="rival-data">
+                        <span id="visitLabel">RIVAL</span>
+                        <div id="visit-score" class="points-white">0</div>
+                    </div>
+                    <div class="rival-quick-btns">
+                        <div class="rival-row">
+                            <button class="rival-circle" onclick="addRival(1)">1</button>
+                            <button class="rival-circle" onclick="addRival(2)">2</button>
+                            <button class="rival-circle" onclick="addRival(3)">3</button>
+                            <button class="rival-circle rival-reb" onclick="addRivalReb()">R</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-container">
+                <div class="button-grid grid-main">
+                    <div class="btn rect p-btn" draggable="true" ondragstart="drag(event)" data-type="pts1">+1</div>
+                    <div class="btn rect p-btn" draggable="true" ondragstart="drag(event)" data-type="pts2">+2</div>
+                    <div class="btn rect p-btn" draggable="true" ondragstart="drag(event)" data-type="pts3">+3</div>
+                    <div class="btn rect m-btn" draggable="true" ondragstart="drag(event)" data-type="miss1">F1</div>
+                    <div class="btn rect m-btn" draggable="true" ondragstart="drag(event)" data-type="miss2">F2</div>
+                    <div class="btn rect m-btn" draggable="true" ondragstart="drag(event)" data-type="miss3">F3</div>
+                </div>
+
+                <div class="spacer-v"></div>
+
+                <div class="button-grid grid-secondary">
+                    <div class="btn rect reb-btn" draggable="true" ondragstart="drag(event)" data-type="reb">REB</div>
+                    <div class="btn rect ast-btn" draggable="true" ondragstart="drag(event)" data-type="ast">AST</div>
+                    <div class="btn rect foul-btn" draggable="true" ondragstart="drag(event)" data-type="foul">FALTA</div>
+                </div>
+
+                <button onclick="addTurnover()" class="btn-turnover">PÉRDIDA EQUIPO ( <span id="team-turnovers">0</span> )</button>
+
+                <div id="footer-actions">
+                    <button onclick="undo()" class="btn-undo">↩ DESHACER ÚLTIMA ACCIÓN</button>
+                    <div class="export-row">
+                        <button onclick="exportCSV()" class="btn-csv">Excel</button>
+                        <button onclick="copySummary()" class="btn-copy">WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
