@@ -5,7 +5,7 @@ const PLANTILLA_CLUB = [
     {id: 7, name: "JOSUÉ #18"}, {id: 8, name: "JORGE #78"},
     {id: 9, name: "ANSELMO #34"}, {id: 10, name: "RICARDO #22"},
     {id: 11, name: "GERMÁN #16"}, {id: 12, name: "GODOY #33"},
-    {id: 13, name: "IVÁN #13"}, {id: 14, name: "GERMÁN #16"}
+    {id: 13, name: "IVÁN #13"}, {id: 14, name: "EMILIO #15"}
 ];
 
 let players = [];
